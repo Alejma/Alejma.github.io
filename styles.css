@@ -1,0 +1,237 @@
+:root {
+  --bg: #0b132b;
+  --surface: #1c2541;
+  --card: #3a506b;
+  --accent: #5bc0be;
+  --text: #ffffff;
+  --muted: #c9d3e0;
+  --shadow: rgba(4, 12, 29, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(91, 192, 190, 0.15), transparent 35%),
+    radial-gradient(circle at 85% 10%, rgba(58, 80, 107, 0.35), transparent 40%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  animation: fade-up 0.7s ease-out;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(160deg, rgba(28, 37, 65, 0.94), rgba(58, 80, 107, 0.78));
+  border: 1px solid rgba(91, 192, 190, 0.35);
+  border-radius: 16px;
+  padding: 2rem 1.2rem;
+  box-shadow: 0 16px 30px var(--shadow);
+  backdrop-filter: blur(2px);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.socials {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid rgba(91, 192, 190, 0.6);
+  background: rgba(91, 192, 190, 0.12);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.socials a:hover {
+  background: rgba(91, 192, 190, 0.24);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 55%;
+  height: 3px;
+  margin-top: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.projects {
+  margin-top: 2rem;
+}
+
+.project-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.project-card {
+  --mx: 50%;
+  --my: 50%;
+  background: linear-gradient(180deg, rgba(58, 80, 107, 0.95), rgba(28, 37, 65, 0.95));
+  border: 1px solid rgba(91, 192, 190, 0.4);
+  border-radius: 14px;
+  padding: 1.1rem;
+  box-shadow: 0 10px 24px rgba(3, 8, 22, 0.25);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  animation: fade-up 0.8s ease both;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    240px circle at var(--mx) var(--my),
+    rgba(91, 192, 190, 0.28),
+    rgba(91, 192, 190, 0.12) 28%,
+    rgba(91, 192, 190, 0) 65%
+  );
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.project-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(3, 8, 22, 0.35);
+  border-color: var(--accent);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:focus-within::before {
+  opacity: 1;
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.project-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.project-card a,
+.github-profile a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.project-card a:hover,
+.github-profile a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.github-profile {
+  margin-top: 2rem;
+  text-align: center;
+  background: rgba(28, 37, 65, 0.9);
+  border: 1px solid rgba(91, 192, 190, 0.32);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(4, 12, 29, 0.25);
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  opacity: 0.85;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+}
